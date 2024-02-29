@@ -6,57 +6,36 @@
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:58:33 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/02/23 19:53:16 by dsedlets         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:42:04 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	needle_len;
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
+	const char	*compare_start;
 
-	needle_len = 0;
-	while (needle[needle_len] != '\0')
-		needle_len++;
-//считаем длину иглы
-//	if (!haystack || !needle)
-//		return (0);/*возвращаем ноль если илгы и/или стога не существует*/
-	if (len < needle_len)
-		return (0);/*то же если длина буфера меньше длины иглы*/
-	if (*needle == '\0')
-		return ((char *)haystack);/*если игла пуста - возвращаем начало стог сена весь*/
+	if (*little == '\0')
+		return ((char *)big);
 	i = 0;
-	while (haystack[i] != '\0' && i < len - needle_len)
+	while (i < len && big[i] != '\0')
 	{
-		j = 0;
-		while (needle[j] != '\0' && haystack[i + j] == needle[j])
-			j++;
-		if (needle[j] == '\0')
-			return ((char *)(haystack + i));
-		i++;
+		if (big[i] == little[0])
+		{
+			j = 0;
+			compare_start = big + i;
+			while (i + j < len && big[i + j] != '\0' && little[j] != '\0'
+				&& big [i + j] == little[j])
+				j++;
+			if (little[j] == '\0')
+				return ((char *)compare_start);
+			i++;
+		}
+		else
+			i++;
 	}
 	return (0);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-
-int	main(void)
-{
-	char *haystack = "Hello World!";
-	char *needle = "ell";
-	size_t len = strlen(haystack);
-
-	char *result = strnstr(haystack, needle, len);
-	char *ft_result = ft_strnstr(haystack, needle, len);
-//	char *result2 = strnstr(((void *)0), "fake", 3);
-	char *ft_result2 = ft_strnstr(((void *)0), "fake", 3);
-	printf("%s\n", result);
-	printf("%s\n", ft_result);
-//	printf("%s\n", result2);
-	printf("%s\n", ft_result2);
-	return (0);
-}*/

@@ -6,52 +6,46 @@
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 23:20:44 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/02/23 22:58:23 by dsedlets         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:22:28 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+ * '\v' - вертикальная табуляция
+ * '\f' - перевод формата
+ * '\r' - возврат каретки
+ */
 
-int	is_numeric(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}	
+#include "libft.h"
 
-int	is_space(char c)
+static int	is_space(char c)
 {
-	if ((c >= 10 && c <= 13) || c == ' ')
-		return (1);
-	return (0);
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\v' || c == '\f' || c == '\r');
 }
 
 int	ft_atoi(const char *str)
 {
-	int	i;
+	int	num;
 	int	sign;
-	int	result;
 
 	sign = 1;
-	result = 0;
-	i = 0;
-	if (!str)
-		return (0);
-	while (is_space(str[i]))
-		i++;
-	while (str[i] != '\0')
+	num = 0;
+	while (is_space(*str))
+		str++;
+	if (*str == '-')
 	{
-		while (!is_numeric(str[i]))
-		{
-			if (str[i] == '-')
-				sign = -sign;
-			i++;
-		}
-		if (is_numeric(str[i]) || str[i] != '\0')
-		{
-			result = result * 10 + (str[i] - '0');
-		i++;
-		}
+		sign *= -1;
+		str++;
 	}
-	return (result * sign);
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		num *= 10;
+		num += *str - '0';
+		str++;
+	}
+	return (num * sign);
 }
 /*
 #include <stdio.h>
@@ -59,7 +53,7 @@ int	ft_atoi(const char *str)
 
 int	main(void)
 {
-	char *a = "-465";
+	char *a = "   -465";
 	int b;
 	int	c;
 
