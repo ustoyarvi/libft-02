@@ -6,7 +6,7 @@
 #    By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 16:32:01 by dsedlets          #+#    #+#              #
-#    Updated: 2024/02/26 22:35:46 by dsedlets         ###   ########.fr        #
+#    Updated: 2024/03/01 02:40:48 by dsedlets         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ FILES = ft_atoi \
 	ft_substr \
 	ft_strjoin \
 	ft_strtrim \
+	ft_split \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

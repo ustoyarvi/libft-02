@@ -6,7 +6,7 @@
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:58:33 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/03/01 00:42:04 by dsedlets         ###   ########.fr       */
+/*   Updated: 2024/03/01 01:02:01 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		else
 			i++;
 	}
-	return (0);
+	return (NULL);
 }
