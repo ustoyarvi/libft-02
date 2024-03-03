@@ -6,7 +6,7 @@
 #    By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 16:32:01 by dsedlets          #+#    #+#              #
-#    Updated: 2024/03/03 18:18:40 by dsedlets         ###   ########.fr        #
+#    Updated: 2024/03/03 20:29:26 by dsedlets         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,10 @@ $(NAME) : $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -I$(INC_DIR) -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) 
 
 re: fclean all
 
