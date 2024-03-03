@@ -14,7 +14,7 @@
  * на найденный символ или NULL, если символ не найден.
  */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
