@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 01:23:45 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/03/03 19:20:39 by dsedlets         ###   ########.fr       */
+/*   Created: 2024/03/03 17:27:24 by dsedlets          #+#    #+#             */
+/*   Updated: 2024/03/03 17:31:36 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
- * Используется для вывода строки в заданный файловый дескриптор.
- */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (s == NULL)
+	if (!lst || !del)
 		return ;
-	while (*s != '\0')
-	{
-		write(fd, s, 1);
-		s++;
-	}
+	del(lst->content);
+	free(lst);
 }
