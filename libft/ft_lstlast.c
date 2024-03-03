@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 22:27:05 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/03/03 01:24:07 by dsedlets         ###   ########.fr       */
+/*   Created: 2024/03/03 03:52:57 by dsedlets          #+#    #+#             */
+/*   Updated: 2024/03/03 03:59:03 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/* 
+ * While пока lst не станет равным NULL и пока у текущего элемента есть 
+ *  следующий элемент.
+ */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	len;
-
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	while (lst && lst->next)
+		lst = lst->next;
+	return (lst);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char *a = "qwert";
-	char *b = "";
-
-	printf("%d \n", ft_strlen(a));
-	printf("%lu \n", strlen(a));
-	printf("%d \n", ft_strlen(b));
-	printf("%lu \n", strlen(b));
-	return (0);
-}
-*/

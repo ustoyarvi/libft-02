@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 22:27:05 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/03/03 01:24:07 by dsedlets         ###   ########.fr       */
+/*   Created: 2024/03/03 03:34:09 by dsedlets          #+#    #+#             */
+/*   Updated: 2024/03/03 03:52:38 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+ * В цикле мы увеличиваем счетчик lst_size на 1 и перемещаем указатель lst
+ *  на следующий элемент списка.
+ */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	len;
+	int	lst_size;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	lst_size = 0;
+	while (lst)
+	{
+		lst_size++;
+		lst = lst->next;
+	}
+	return (lst_size);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char *a = "qwert";
-	char *b = "";
-
-	printf("%d \n", ft_strlen(a));
-	printf("%lu \n", strlen(a));
-	printf("%d \n", ft_strlen(b));
-	printf("%lu \n", strlen(b));
-	return (0);
-}
-*/

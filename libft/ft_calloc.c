@@ -6,7 +6,7 @@
 /*   By: dsedlets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:46:47 by dsedlets          #+#    #+#             */
-/*   Updated: 2024/02/24 18:48:47 by dsedlets         ###   ########.fr       */
+/*   Updated: 2024/03/03 01:33:40 by dsedlets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -30,9 +30,9 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (size && count > (INT_MAX / size))
 		return (NULL);
-	ptr = malloc(count * size);
+	ptr = (void *)malloc(count * size);
 	if (ptr == NULL)
-		return (ptr);
+		return (NULL);
 	ft_bzero(ptr, size * count);
 	return (ptr);
 }
